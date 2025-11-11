@@ -35,12 +35,12 @@
       background: radial-gradient(circle at top, #17132a, var(--bg));
       color: var(--fg);
       font-family: var(--font);
-      line-height: 1.6; /* global slight spacing boost */
+      line-height: 1.6;
     }
 
     main {
       text-align: center;
-      padding: 3rem 2.5rem; /* slightly more padding inside card */
+      padding: 3rem 2.5rem;
       border-radius: 18px;
       border: 2px solid rgba(193, 62, 255, 0.55);
       background: rgba(12, 10, 20, 0.9);
@@ -51,7 +51,7 @@
     }
 
     .logo {
-      margin-bottom: 1.3rem; /* more space below logo */
+      margin-bottom: 1.8rem; /* more space below logo */
       width: 100%;
       display: flex;
       justify-content: center;
@@ -62,7 +62,7 @@
       max-width: 100%;
       height: auto;
       width: 260px;
-      transform: scale(1.6);
+      transform: scale(1.6);    /* final scale */
       transform-origin: center;
     }
 
@@ -71,19 +71,20 @@
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--accent2);
-      margin-bottom: 1.2rem; /* more spacing below tagline */
+      margin-bottom: 1.5rem; /* more space before 'Australia' */
     }
 
     .location {
       font-size: 1rem;
       color: var(--accent3);
-      margin-bottom: 2.2rem; /* more spacing before footer */
+      margin-bottom: 1.2rem; /* tighter spacing above footer */
     }
 
     footer {
       font-size: 0.8rem;
       color: var(--muted);
       letter-spacing: 0.05em;
+      margin-top: 0; /* eliminate extra bottom gap */
     }
   </style>
 </head>

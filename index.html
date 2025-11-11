@@ -54,12 +54,11 @@
     }
 
     .logo img {
-      /* Size relative to the card, not viewport */
       display: block;
       margin: 0 auto;
-      width: 80%;            /* percentage of the card width */
-      max-width: 420px;      /* don't exceed this */
-      min-width: 160px;      /* don't get too tiny */
+      width: 100%;          /* fills the box width */
+      max-width: 520px;     /* cap size on large screens */
+      min-width: 180px;     /* small-screen safeguard */
       height: auto;
     }
 
@@ -67,14 +66,13 @@
       font-size: 0.95rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: --accent2;
-      color: var(--accent2);
+      color: var(--accent2); /* cyan */
       margin-bottom: 0.8rem;
     }
 
     .location {
       font-size: 0.95rem;
-      color: var(--accent3);
+      color: var(--accent3); /* gold */
       margin-bottom: 1.8rem;
     }
 

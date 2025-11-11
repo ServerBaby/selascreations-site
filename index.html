@@ -10,13 +10,23 @@
       --bg: #090812;
       --fg: #edebfa;
       --accent: #c13eff;   /* brand violet-magenta */
-      --accent2: #3efff1;  /* cyan accent */
+      --accent2: #3efff1;  /* cyan accent for tagline */
       --muted: #a39cb6;    /* cool lavender grey */
       --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
-    * { box-sizing: border-box; }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
     body {
       margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -25,6 +35,7 @@
       color: var(--fg);
       font-family: var(--font);
     }
+
     main {
       text-align: center;
       padding: 2.5rem 2rem;
@@ -34,16 +45,20 @@
       backdrop-filter: blur(12px);
       max-width: 440px;
       width: 90%;
+      margin: 0; /* ensure flex centering is exact */
     }
+
     .logo {
       margin: 0 0 0.8rem;
     }
+
     .logo img {
       width: clamp(160px, 40vw, 420px);
       height: auto;
       display: block;
       margin: 0 auto;
     }
+
     .tagline {
       font-size: 0.95rem;
       letter-spacing: 0.18em;
@@ -51,11 +66,13 @@
       color: var(--accent2); /* cyan */
       margin-bottom: 0.8rem;
     }
+
     .location {
       font-size: 0.95rem;
       color: var(--muted);
       margin-bottom: 1.8rem;
     }
+
     footer {
       font-size: 0.75rem;
       color: var(--muted);
@@ -63,16 +80,16 @@
   </style>
 </head>
 <body>
-<main>
-  <div class="logo">
-    <img src="assets/scbutterflyc13effff-10mm-angle-full-logo-2.svg"
-         alt="Sela’s Creations logo"
-         onerror="this.onerror=null;this.src='assets/scbutterflyc13effff-10mm-angle-full-logo-2.png';">
-  </div>
+  <main>
+    <div class="logo">
+      <img src="assets/scbutterflyc13effff-10mm-angle-full-logo-2.svg"
+           alt="Sela’s Creations logo"
+           onerror="this.onerror=null;this.src='assets/scbutterflyc13effff-10mm-angle-full-logo-2.png';">
+    </div>
 
-  <div class="tagline">Screenwriter &nbsp; | &nbsp; Programmer</div>
-  <div class="location">Australia</div>
-  <footer>© 2025 Sela’s Creations. All rights reserved.</footer>
-</main>
+    <div class="tagline">Screenwriter &nbsp; | &nbsp; Programmer</div>
+    <div class="location">Australia</div>
+    <footer>© 2025 Sela’s Creations. All rights reserved.</footer>
+  </main>
 </body>
 </html>

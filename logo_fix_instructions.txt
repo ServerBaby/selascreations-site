@@ -1,0 +1,110 @@
+SVG Logo Fix Instructions (for Sela’s Creations Logo)
+
+(Save this as logo_fix_instructions.txt if you want.)
+
+Purpose
+
+These instructions describe how to properly convert the SVG logo so that all text is turned into vector paths. This prevents browsers from substituting incorrect fonts, ensures the logo displays consistently across devices, and avoids issues where the logo appears differently from the PNG version.
+
+1. Open the SVG in Inkscape
+
+The original SVG file must be opened in Inkscape, not a browser.
+
+Steps:
+
+Launch Inkscape
+
+Open the file scbutterflyc13effff-10mm-angle-full-logo-2.svg
+
+2. Select All Text in the Logo
+
+The logo currently contains text objects (for example, “Sela’s Creations”), which browsers render using system fonts. This causes incorrect appearance.
+
+Steps:
+
+Press F1 or choose the Select Tool
+
+Click each text object
+
+If multiple text objects exist, drag-select the whole area or use Edit → Select All
+
+3. Convert Text to Paths
+
+This step transforms all text into vector outlines. Browsers will then render the shapes directly, without needing the original font installed.
+
+Steps:
+
+With all text selected, go to: Path → Object to Path
+
+Repeat the conversion if elements are grouped.
+
+4. Ungroup All Path Objects
+
+Some SVG logos contain nested groups that must be separated before final export.
+
+Steps:
+
+With everything selected, go to: Object → Ungroup
+
+If Ungroup is still available, repeat until it becomes disabled
+
+All logo components should now be standalone path objects, not text objects
+
+5. Save as a Plain SVG
+
+Exporting as a “Plain SVG” removes Inkscape-specific metadata and ensures widest compatibility across web browsers.
+
+Steps:
+
+Go to File → Save As
+
+Choose Plain SVG (*.svg)
+
+Overwrite the existing SVG file or save a new version with a clean name
+
+6. Verify That Text Is Fully Converted
+
+To confirm the conversion worked:
+
+Open the SVG in a text editor
+
+Search for <text> tags
+
+If text-to-path conversion succeeded, no <text> tags should remain.
+The file should instead contain only <path> or <g> elements.
+
+7. Replace the Existing Logo on the Website
+
+Once the SVG is converted:
+
+Upload or replace the file in:
+assets/scbutterflyc13effff-10mm-angle-full-logo-2.svg
+
+No other website changes are necessary. The browser will render the new path-only SVG exactly as intended.
+
+8. Optional: Keep the PNG as a fallback
+
+The existing PNG fallback can remain in the <img> tag as a safety measure, but is usually no longer required after the SVG is fixed.
+
+
+Replace: 
+      <!-- logo + tagline block in the center of the card -->
+      <div class="content">
+        <div class="logo">
+          <img src="assets/scbutterflyc13effff-10mm-angle-full-logo-2.png"
+               alt="Sela’s Creations logo">
+               <!-- temporarily forces PNG only
+                    (SVG removed until text is converted to paths) -->
+        </div>
+
+with:
+
+      <!-- logo + tagline block in the center of the card -->
+      <div class="content">
+        <div class="logo">
+          <img src="assets/scbutterflyc13effff-10mm-angle-full-logo-2.svg"
+               alt="Sela’s Creations logo"
+               onerror="this.onerror=null;
+                        this.src='assets/scbutterflyc13effff-10mm-angle-full-logo-2.png';">
+               <!-- fallback swaps SVG for PNG if the SVG fails to load -->
+        </div>

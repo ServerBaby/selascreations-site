@@ -13,14 +13,14 @@
   <style>
     /* root-level CSS variables accessed with var() */
     :root {
-      --bg: #090812;     /* main page background colour */
-      --fg: #edebfa;     /* default text colour */
-      --accent: #c13eff; /* brand violet-magenta highlight */
-      --accent2: #58fff6;/* cyan highlight (tagline colour) */
-      --accent3: #d6b676;/* gold (navigation link colour) */
-      --muted: #a39cb6;  /* muted footer and secondary text */
+      --bg: #090812;       /* main page background colour */
+      --fg: #edebfa;       /* default text colour */
+      --accent: #c13eff;   /* brand violet-magenta highlight */
+      --accent2: #58fff6;  /* cyan highlight (tagline colour) */
+      --accent3: #d6b676;  /* gold (navigation link colour) */
+      --muted: #a39cb6;    /* muted footer and secondary text */
       --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-                         /* default site typeface stack */
+                             /* default site typeface stack */
     }
 
     /* universal selector matches all elements */
@@ -58,22 +58,39 @@
                                                 /* semi-transparent purple border */
       background: rgba(12, 10, 20, 0.9);      /* translucent dark card background */
       backdrop-filter: blur(12px);              /* blurs background behind the card */
-      max-width: 440px;                         /* prevents card from growing too wide */
+      max-width: 450px;                         /* prevents card from growing too wide */
       width: 90%;                               /* scales card on small screens */
       aspect-ratio: 1.636 / 1;                  /* Australian business-card ratio */
       margin: 0;                                /* no outer margin */
 
       display: flex;                            /* flex layout for vertical structure */
       flex-direction: column;                   /* stacks nav, content, footer vertically */
-      justify-content: space-between;           /* spreads top/middle/bottom zones */
+      justify-content: center;                  /* card stays centered overall */
+
+      position: relative;                       /* allows absolute positioning of child lines
+                                                   relative to this card */
     }
 
-    /* navigation bar at top of card */
+    /* wrapper containing nav + logo as a single block */
+    .top-block {
+      margin-top: 0rem;                         /* keeps the block near the top */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* navigation bar at the top of the card */
     nav {
-      margin-bottom: 1rem;          /* gap under nav bar */
+      margin-bottom: 0rem;          /* no extra gap below nav */
       display: flex;                /* horizontal layout for links */
       justify-content: center;      /* centers links horizontally */
       gap: 1.4rem;                  /* spacing between Home and About links */
+
+      /* positions the nav at a fixed distance from the top of the card */
+      position: absolute;
+      top: 1.6rem;                  /* distance from top edge of card */
+      left: 50%;
+      transform: translateX(-50%);  /* centers nav horizontally in the card */
     }
 
     /* navigation link styling */
@@ -91,17 +108,19 @@
       font-weight: 700;             /* bold for the current page */
     }
 
-    /* wrapper controlling the logo + tagline block */
-    .content {
-      display: flex;                /* flex layout for logo + tagline */
-      flex-direction: column;       /* stacks logo above tagline */
-      align-items: center;          /* centers content horizontally */
-      margin-top: -3.4rem;          /* shifts logo/tagline block upward */
-    }
-
-    /* controls spacing beneath the logo image */
+    /* controls spacing and position of the logo image */
     .logo {
-      margin-bottom: 2rem;          /* gap between logo and tagline */
+      margin-top: 0rem;             /* spacing here no longer affects layout */
+      margin-bottom: 2rem;          /* kept for readability in case layout changes */
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      /* positions the logo at a fixed distance from the top of the card */
+      position: absolute;
+      top: 3.3rem;                  /* adjust this value to nudge logo up/down */
+      left: 50%;
+      transform: translateX(-50%);  /* centers logo horizontally */
     }
 
     /* controls logo image rendering and hit behaviour */
@@ -112,9 +131,7 @@
       width: 260px;                 /* base width before scaling */
       transform: scale(1.6);        /* enlarges the logo within its box */
       transform-origin: center;     /* scales the logo outward from its center */
-
-      /* disables clicks on the logo so overlapping areas do not block links */
-      pointer-events: none;         
+      pointer-events: none;         /* ensures logo never blocks clicks on nav */
     }
 
     /* tagline styling under the logo */
@@ -123,6 +140,13 @@
       letter-spacing: 0.22em;       /* wide spacing for a logo-like feel */
       text-transform: uppercase;    /* converts tagline to all caps */
       color: var(--accent2);        /* cyan text colour */
+      white-space: nowrap;          /* keeps tagline on a single visual line */
+
+      /* positions the tagline by distance from the top of the card */
+      position: absolute;
+      top: 9.6rem;                  /* adjust this value to move tagline up/down */
+      left: 50%;
+      transform: translateX(-50%);  /* centers tagline horizontally */
     }
 
     /* footer at the bottom of the card */
@@ -130,7 +154,14 @@
       font-size: 0.7rem;            /* small footer text */
       color: var(--muted);          /* muted lavender-grey */
       letter-spacing: 0.05em;       /* slight spacing for aesthetic */
-      margin-bottom: 0.3rem;        /* small breathing room at the bottom edge */
+      margin-bottom: 0;             /* margin no longer controls position */
+      white-space: nowrap;          /* keeps footer text on a single visual line */
+
+      /* positions footer relative to the bottom of the card */
+      position: absolute;
+      bottom: 1.5rem;               /* distance above bottom edge of card */
+      left: 50%;
+      transform: translateX(-50%);  /* centers footer horizontally */
     }
   </style>
 </head>
@@ -138,24 +169,25 @@
 <body>
 <main>
 
-  <!-- navigation links at the top of the card -->
-  <nav>
-    <a href="index.html" class="active">Home</a>
-    <a href="about.html">About</a>
-  </nav>
+  <!-- wrapper containing nav + logo as a single block -->
+  <div class="top-block">
 
-  <!-- logo + tagline block in the center of the card -->
-  <div class="content">
+    <!-- navigation links at the top of the card -->
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+    </nav>
+
+    <!-- logo block directly under nav -->
     <div class="logo">
-      <img src="assets/scbutterflyc13effff-10mm-angle-full-logo-2.svg"
-           alt="Sela’s Creations logo"
-           onerror="this.onerror=null;
-                    this.src='assets/scbutterflyc13effff-10mm-angle-full-logo-2.png';">
-           <!-- fallback swaps SVG for PNG if the SVG fails to load -->
+      <img src="assets/scbutterflyc13effff-10mm-angle-full-logo-2.png"
+           alt="Sela’s Creations logo">
     </div>
 
-    <div class="tagline">Screenwriter &nbsp; | &nbsp; Programmer</div>
   </div>
+
+  <!-- tagline positioned independently on the card -->
+  <div class="tagline">Screenwriter &nbsp; | &nbsp; Programmer</div>
 
   <!-- footer text at the bottom of the card -->
   <footer>© 2025 Sela’s Creations. All rights reserved.</footer>

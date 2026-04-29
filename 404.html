@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"> <!-- declares UTF-8 character encoding -->
-  <title>Page Not Found – Sela’s Creations</title> <!-- sets the browser tab title -->
+  <title>Page Not Found – Sela’s Creations</title>
+  <!-- sets the browser tab title -->
 
   <!-- ensures mobile devices treat the page width as the device width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,183 +11,33 @@
   <!-- short description used by search engines and link previews -->
   <meta name="description" content="Page not found – Sela’s Creations.">
 
-  <style>
-    /* root-level CSS variables accessed with var() */
-    :root {
-      --bg: #090812;       /* main page background colour */
-      --fg: #edebfa;       /* default text colour */
-      --accent: #c13eff;   /* brand violet-magenta highlight */
-      --accent2: #58fff6;  /* cyan highlight */
-      --accent3: #d6b676;  /* gold (navigation link colour) */
-      --muted: #a39cb6;    /* muted footer and secondary text */
-      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-                             /* default site typeface stack */
-    }
-
-    /* universal selector matches all elements */
-    * {
-      box-sizing: border-box; /* widths include padding + border for simpler layout */
-    }
-
-    /* basic layout reset for html and body */
-    html, body {
-      margin: 0;   /* removes default browser margin */
-      padding: 0;  /* removes default browser padding */
-      height: 100%;/* ensures document uses full viewport height */
-    }
-
-    /* page background and general text layout */
-    body {
-      min-height: 100vh;                       /* guarantees a full-height page */
-      display: flex;                           /* enables flexbox centering */
-      align-items: center;                     /* vertically centers the card */
-      justify-content: center;                 /* horizontally centers the card */
-      background: radial-gradient(circle at top, #17132a, var(--bg));
-                                               /* soft circular gradient from top */
-      color: var(--fg);                        /* default text colour */
-      font-family: var(--font);                /* global font stack */
-      line-height: 1.6;                        /* comfortable line spacing */
-      font-size: 0.9rem;                       /* base font size */
-    }
-
-    /* main content card, sized like an Australian business card */
-    main {
-      text-align: center;                       /* centers text inside the card */
-      padding: 2rem 2.5rem;                     /* inner spacing around content */
-      border-radius: 18px;                      /* rounded corners */
-      border: 2px solid rgba(193, 62, 255, 0.55);
-                                                /* semi-transparent purple border */
-      background: rgba(12, 10, 20, 0.9);      /* translucent dark card background */
-      backdrop-filter: blur(12px);              /* blurs background behind the card */
-      max-width: 450px;                         /* prevents card from growing too wide */
-      width: 90%;                               /* scales card on small screens */
-      aspect-ratio: 1.636 / 1;                  /* Australian business-card ratio */
-      margin: 0;                                /* no outer margin */
-
-      display: flex;                            /* flex layout for vertical structure */
-      flex-direction: column;                   /* stacks nav, content, footer vertically */
-      justify-content: center;                  /* card stays centered overall */
-
-      position: relative;                       /* allows absolute positioning of child lines */
-    }
-
-    /* wrapper containing nav + logo as a single block */
-    .top-block {
-      margin-top: 0rem;                         /* keeps the block near the top */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* navigation bar at the top of the card */
-    nav {
-      margin-bottom: 0rem;          /* no extra gap below nav */
-      display: flex;                /* horizontal layout for links */
-      justify-content: center;      /* centers links horizontally */
-      gap: 1.4rem;                  /* spacing between Home and About links */
-
-      /* positions the nav at a fixed distance from the top of the card */
-      position: absolute;
-      top: 1.6rem;                  /* distance from top edge of card */
-      left: 50%;
-      transform: translateX(-50%);  /* centers nav horizontally in the card */
-    }
-
-    /* navigation link styling */
-    nav a {
-      text-decoration: none;        /* removes underlines */
-      color: var(--accent3);        /* gold link colour */
-      letter-spacing: 0.1em;        /* wide-spaced uppercase look */
-      text-transform: uppercase;    /* forces links to all caps */
-      font-size: 0.8rem;            /* slightly smaller link size */
-      font-weight: 500;             /* medium weight */
-    }
-
-    /* logo position from the top */
-    .logo {
-      margin-top: 0rem;             /* spacing here does not affect layout */
-      margin-bottom: 2rem;          /* kept for readability */
-      width: 100%;
-      display: flex;
-      justify-content: center;
-
-      /* fixed logo placement */
-      position: absolute;
-      top: 3.3rem;                  /* EXACT match to index.html */
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .logo img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      width: 260px;
-      transform: scale(1.6);
-      transform-origin: center;
-      pointer-events: none;         /* ensures logo never blocks nav clicks */
-    }
-
-    /* first 404 line – replaces tagline */
-    .error-title {
-      font-size: 0.9rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent2);        /* cyan */
-
-      /* slightly higher than index tagline (10.4 → 10.0) */
-      position: absolute;
-      top: 9.4rem;                 
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-    }
-
-    /* second 404 line */
-    .error-sub {
-      font-size: 0.9rem;
-      letter-spacing: 0.05em;
-      color: #e5d9ff;             /* soft lavender */
-
-      position: absolute;
-      top: 11.5rem;                 /* placed neatly under the first line */
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-    }
-
-    /* footer at the bottom of the card */
-    footer {
-      font-size: 0.7rem;            /* small footer text */
-      color: var(--muted);          /* muted lavender-grey */
-      letter-spacing: 0.05em;       /* slight spacing for aesthetic */
-      margin-bottom: 0;             /* margin no longer controls position */
-      white-space: nowrap;          /* prevents line wrapping */
-
-      /* positions footer relative to the bottom of the card */
-      position: absolute;
-      bottom: 1.5rem;               /* distance above bottom edge of card */
-      left: 50%;
-      transform: translateX(-50%);  /* centers footer horizontally */
-    }
-  </style>
+  <!-- shared stylesheet for consistent multi-page styling -->
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
-<main>
+<main class="card card--notfound">
 
-  <div class="top-block">
+  <!-- navigation links at the top of the card -->
+  <nav class="site-nav" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="programming-projects.html">Programming</a>
+    <a href="screenwriting-projects.html">Screenwriting</a>
+  </nav>
 
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-    </nav>
-
-    <div class="logo">
+  <!--
+    logo block uses SVG first, then PNG as a fallback image.
+    this keeps visual quality high while preserving a safe fallback path.
+  -->
+  <div class="logo-wrap">
+    <picture>
+      <source
+        srcset="assets/scbutterflyc13effff-10mm-angle-full-logo-2.svg"
+        type="image/svg+xml">
       <img src="assets/scbutterflyc13effff-10mm-angle-full-logo-2.png"
            alt="Sela’s Creations logo">
-    </div>
-
+    </picture>
   </div>
 
   <!-- 404 replacement for tagline -->
@@ -194,7 +45,9 @@
   <div class="error-sub">Oops! That page flew away…</div>
 
   <!-- footer at bottom -->
-  <footer>© 2025 Sela’s Creations. All rights reserved.</footer>
+  <footer class="site-footer">
+    © 2025 Sela’s Creations. All rights reserved.
+  </footer>
 
 </main>
 </body>

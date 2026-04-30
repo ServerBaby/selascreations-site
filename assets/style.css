@@ -36,6 +36,8 @@ body {
   align-items: center;     /* vertically centers the card */
   justify-content: center; /* horizontally centers the card */
   padding: 1.25rem;        /* protects the card edges on small screens */
+  min-width: max-content;  /* lets fixed cards overflow instead of shrink */
+  overflow: auto;          /* allows scrolling when a card is wider */
   background: radial-gradient(circle at top, #17132a, var(--bg));
                           /* soft circular gradient from top */
   color: var(--fg);       /* default text colour */
@@ -56,9 +58,9 @@ main.card {
                                       /* semi-transparent purple border */
   background: rgba(12, 10, 20, 0.9);  /* translucent dark card background */
   backdrop-filter: blur(12px);        /* blurs background behind the card */
-  max-width: 450px;                  /* default card width for Home/404 */
-  width: 90%;                        /* scales card on small screens */
+  width: 450px;                      /* default fixed card width */
   aspect-ratio: 1.636 / 1;            /* Australian business-card ratio */
+  flex: 0 0 auto;                     /* prevents flexbox from shrinking it */
   margin: 0;                          /* no outer margin */
 
   display: flex;           /* flex layout for vertical structure */
@@ -69,7 +71,7 @@ main.card {
 
 /* wider card variant used by text-heavy pages */
 main.card.card--wide {
-  max-width: 810px; /* retains wider composition for About and Projects */
+  width: 810px; /* retains wider composition for About and Projects */
 }
 
 /* shared navigation bar anchored to card top */
@@ -122,7 +124,7 @@ a.text-link:focus-visible {
 /* wrapper containing logo and its top offset */
 .logo-wrap {
   position: absolute; /* fixes logo relative to the card */
-  top: 3.3rem;        /* default logo distance for Home/404 rhythm */
+  top: 3.15rem;       /* default logo distance for Home/404 rhythm */
   left: 50%;
   transform: translateX(-50%);
   width: min(90%, 420px);
@@ -152,8 +154,8 @@ a.text-link:focus-visible {
 
 /* homepage tagline */
 .hero-line {
-  top: 9.6rem;
-  font-size: 0.86rem;
+  top: 9.9rem;
+  font-size: 0.88rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent2);
@@ -162,7 +164,7 @@ a.text-link:focus-visible {
 /* 404 text styling */
 .error-title {
   top: 9.4rem;
-  font-size: 0.86rem;
+  font-size: 0.88rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent2);
@@ -177,12 +179,12 @@ a.text-link:focus-visible {
 
 /* simple centered placeholder note for project pages */
 .coming-soon {
-  top: 10.85rem;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
   font-size: 0.88rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #e5d9ff;
+  color: var(--accent2);
 }
 
 /* about text block */
@@ -197,11 +199,25 @@ a.text-link:focus-visible {
 /* About Me heading */
 .about-section h1 {
   margin: 0 0 0.9rem;
-  font-size: 0.98rem;
+  font-size: 0.88rem;
   color: var(--accent2);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-weight: 500;
+  font-weight: 400;
+}
+
+/* description copy can move independently from the About Me heading */
+.about-copy {
+  padding-top: 0.82rem;
+}
+
+/* description paragraphs keep equal, slightly tighter vertical spacing */
+.about-copy p {
+  margin: 0;
+}
+
+.about-copy p + p {
+  margin-top: 1.1rem;
 }
 
 /* footer at the bottom of the card */
@@ -234,78 +250,5 @@ main.card--projects .site-nav {
 
 main.card--about .logo-wrap,
 main.card--projects .logo-wrap {
-  top: 4.2rem;
-}
-
-/*
-  responsive adjustments preserve the card concept while preventing overflow on
-  smaller screens. The ratio remains the default; the min-height helps content
-  breathe when navigation wraps to a second row.
-*/
-@media (max-width: 720px) {
-  main.card,
-  main.card.card--wide {
-    width: 90%;
-    min-height: 0;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  nav.site-nav {
-    top: 1.3rem;
-    gap: 0.6rem 0.8rem;
-  }
-
-  .logo-wrap {
-    top: 3.2rem;
-    width: min(90%, 360px);
-  }
-
-  .hero-line {
-    top: 9.4rem;
-    font-size: 0.8rem;
-    letter-spacing: 0.16em;
-  }
-
-  .error-title {
-    top: 9.2rem;
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
-  }
-
-  .error-sub {
-    top: 11rem;
-    font-size: 0.8rem;
-  }
-
-  .about-section {
-    margin-top: 8.6rem;
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-
-  .coming-soon {
-    top: 10.2rem;
-    font-size: 0.82rem;
-    letter-spacing: 0.14em;
-  }
-
-  footer.site-footer {
-    bottom: 1.1rem;
-    font-size: 0.66rem;
-  }
-
-  main.card--about .site-nav,
-  main.card--projects .site-nav {
-    top: 1.7rem;
-  }
-
-  main.card--about .logo-wrap,
-  main.card--projects .logo-wrap {
-    top: 3.95rem;
-  }
-
-  main.card--about .about-section {
-    margin-top: 9.2rem;
-  }
+  top: 4.05rem;
 }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <!-- declares UTF-8 character encoding -->
+  <title>Home - Sela's Creations</title>
+  <!-- sets the browser tab title -->
+
+  <!-- ensures mobile devices treat the page width as the device width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- short description used by search engines and link previews -->
+  <meta name="description" content="Home page for Sela's Creations.">
+
+  <!-- shared stylesheet for consistent multi-page styling -->
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+<main class="card card--wide card--projects">
+
+  <!-- navigation links at the top of the card -->
+  <nav class="site-nav" aria-label="Primary navigation">
+    <a href="home.html" class="active" aria-current="page">Home</a>
+    <a href="about.html">About</a>
+    <a href="screenwriting-projects.html">Screenwriting</a>
+    <a href="programming-projects.html">Programming</a>
+  </nav>
+
+  <!--
+    logo block uses SVG first, then PNG as a fallback image.
+    this keeps visual quality high while preserving a safe fallback path.
+  -->
+  <div class="logo-wrap">
+    <picture>
+      <source
+        srcset="assets/scbutterflyc13effff-10mm-angle-full-logo-2.svg"
+        type="image/svg+xml">
+      <img src="assets/scbutterflyc13effff-10mm-angle-full-logo-2.png"
+           alt="Sela's Creations logo">
+    </picture>
+  </div>
+
+  <!--
+    home content gives visitors short paths into the main site sections.
+    each link includes a brief description so the page works as a directory.
+  -->
+  <section class="home-directory" aria-label="Site sections">
+    <div class="home-directory-inner">
+      <a class="home-directory-link" href="about.html">
+        <span class="home-directory-title">About Sela's Creations</span>
+        <span class="home-directory-copy">
+          Learn more about the creatives behind Sela's Creations.
+        </span>
+      </a>
+
+      <a class="home-directory-link" href="screenwriting-projects.html">
+        <span class="home-directory-title">Screenwriting Samples</span>
+        <span class="home-directory-copy">
+          Selected screenwriting projects and story work from the lead
+          creative behind Sela's Creations.
+        </span>
+      </a>
+
+      <a class="home-directory-link" href="programming-projects.html">
+        <span class="home-directory-title">Programming Samples</span>
+        <span class="home-directory-copy">
+          Selected examples of Information Technology projects from Sela's
+          Creations.
+        </span>
+      </a>
+
+      <div class="home-contact">
+        <span class="home-directory-title">Contact</span>
+        <a class="text-link" href="mailto:home@selascreations.com">
+          home@selascreations.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer text at the bottom of the card -->
+  <footer class="site-footer">
+    © 2025 Sela's Creations. All rights reserved.
+  </footer>
+
+</main>
+</body>
+</html>

@@ -72,6 +72,12 @@ main.card {
 /* wider card variant used by text-heavy pages */
 main.card.card--wide {
   width: 810px; /* retains wider composition for About and Projects */
+  border-width: 3px; /* matches the entry card border thickness */
+}
+
+/* entry page card border is slightly wider for a stronger first screen */
+main.card--home {
+  border-width: 3px;
 }
 
 /* shared navigation bar anchored to card top */
@@ -133,6 +139,11 @@ a.text-link:focus-visible {
   pointer-events: none; /* ensures the logo never blocks links */
 }
 
+/* entry page raises the brand block to make room for the entry link */
+main.card--home .logo-wrap {
+  top: 1rem;
+}
+
 /* logo media sizing rules keep the logo scaling as one unit */
 .logo-wrap picture,
 .logo-wrap img {
@@ -156,9 +167,64 @@ a.text-link:focus-visible {
 .hero-line {
   top: 9.9rem;
   font-size: 0.88rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25rem;
   text-transform: uppercase;
   color: var(--accent2);
+}
+
+/* entry page tagline is lifted with the logo as a single visual group */
+main.card--home .hero-line {
+  top: 7rem;
+  color: var(--accent3);
+}
+
+/* entry link invites visitors into the internal home page */
+.enter-link {
+  position: absolute;
+  top: 10.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.9rem;
+  border-radius: 18px;
+  border: 2px solid var(--accent);
+  background:
+    linear-gradient(to right, #2a2148, transparent 18%, transparent 82%,
+                   #2a2148),
+    linear-gradient(to bottom, #2a2148, var(--bg) 50%, #2a2148);
+  color: var(--accent2);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 400;
+  transition: color 180ms ease, border-color 180ms ease;
+  white-space: nowrap;
+}
+
+/* entry link text is nudged up inside the button without moving the box */
+.enter-link::before {
+  content: attr(data-label);
+  transform: translateY(-0.08rem);
+}
+
+/* entry link uses the same restrained interaction polish as navigation */
+.enter-link:hover,
+.enter-link:focus-visible {
+  border-color: rgba(214, 182, 118, 0.65);
+  color: #f3dca8;
+}
+
+.enter-link:focus-visible {
+  outline: 1px solid rgba(214, 182, 118, 0.5);
+  outline-offset: 2px;
+}
+
+/* entry page footer sits a touch lower to balance the new button */
+main.card--home .site-footer {
+  bottom: 1.05rem;
 }
 
 /* 404 text styling */
@@ -187,19 +253,126 @@ a.text-link:focus-visible {
   color: var(--accent2);
 }
 
+/* Home directory replaces the placeholder with short section paths */
+.home-directory {
+  position: absolute;
+  top: 9.6rem;
+  bottom: 2.35rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 5rem);
+  border: 1px solid var(--accent2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* inner directory block uses a fixed position for visual consistency */
+.home-directory-inner {
+  position: absolute;
+  top: 2rem;
+  left: 4rem;
+  width: 38rem;
+  text-align: left;
+}
+
+/* directory links are simple rows, not separate nested card elements */
+.home-directory-link,
+.home-contact {
+  display: block;
+  padding: 0.42rem 0;
+  text-decoration: none;
+}
+
+/* directory titles use the existing gold navigation colour */
+.home-directory-title {
+  display: block;
+  color: var(--accent2);
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* directory descriptions stay quiet so the links remain easy to scan */
+.home-directory-copy {
+  display: block;
+  margin-top: 0.12rem;
+  color: #e5d9ff;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.home-directory-link:hover .home-directory-title,
+.home-directory-link:focus-visible .home-directory-title {
+  color: #f3dca8;
+}
+
+.home-directory-link:focus-visible {
+  outline: 1px solid rgba(214, 182, 118, 0.5);
+  outline-offset: 2px;
+}
+
+/* Home contact email uses body-copy colour until hovered or focused */
+.home-contact .text-link {
+  color: #e5d9ff;
+}
+
+/* project preview box mirrors the temporary Home and About text area */
+.project-preview-box {
+  position: absolute;
+  top: 9.6rem;
+  bottom: 2.35rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 5rem);
+  border: 1px solid var(--accent2);
+}
+
+/* project preview inner block keeps future text aligned for comparison */
+.project-preview-inner {
+  position: absolute;
+  top: 50%;
+  left: 4rem;
+  width: 38rem;
+  transform: translateY(-50%);
+}
+
+.project-preview-inner .coming-soon {
+  top: 50%;
+}
+
 /* about text block */
 .about-section {
-  text-align: left;
+  position: absolute;
+  top: 9.6rem;
+  bottom: 2.35rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 5rem);
+  border: 1px solid var(--accent2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #e5d9ff;
-  margin-top: 9rem;      /* clears nav + logo with the original spacing */
-  margin-bottom: 1.6rem;
   font-size: 0.92rem;
+  text-align: left;
+}
+
+/* inner About block uses the same position as the Home directory text */
+.about-inner {
+  position: absolute;
+  top: 2rem;
+  left: 4rem;
+  width: 38rem;
+  text-align: left;
 }
 
 /* About Me heading */
 .about-section h1 {
-  margin: 0 0 0.9rem;
-  font-size: 0.88rem;
+  margin: 0 0 0.4rem;
+  padding-top: 0.42rem;
+  font-size: 0.92rem;
   color: var(--accent2);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -208,6 +381,7 @@ a.text-link:focus-visible {
 
 /* description copy can move independently from the About Me heading */
 .about-copy {
+  display: inline-block;
   padding-top: 0.82rem;
 }
 
@@ -217,7 +391,7 @@ a.text-link:focus-visible {
 }
 
 .about-copy p + p {
-  margin-top: 1.1rem;
+  margin-top: 0.65rem;
 }
 
 /* footer at the bottom of the card */
@@ -227,7 +401,7 @@ footer.site-footer {
   transform: translateX(-50%);
   bottom: 1.5rem;
   white-space: nowrap;
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   color: var(--muted);
   letter-spacing: 0.05em;
 }

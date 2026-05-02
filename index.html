@@ -18,14 +18,6 @@
 <body>
 <main class="card card--home">
 
-  <!-- navigation links at the top of the card -->
-  <nav class="site-nav" aria-label="Primary navigation">
-    <a href="index.html" class="active" aria-current="page">Home</a>
-    <a href="about.html">About</a>
-    <a href="programming-projects.html">Programming</a>
-    <a href="screenwriting-projects.html">Screenwriting</a>
-  </nav>
-
   <!--
     logo block uses SVG first, then PNG as a fallback image.
     this keeps visual quality high while preserving a safe fallback path.
@@ -42,6 +34,10 @@
 
   <!-- tagline positioned independently on the card -->
   <div class="hero-line">Screenwriter &nbsp; | &nbsp; Programmer</div>
+
+  <!-- entry link opens the main site home page from the landing card -->
+  <a class="enter-link" href="home.html" data-label="Enter Site"
+     aria-label="Enter Site"></a>
 
   <!-- footer text at the bottom of the card -->
   <footer class="site-footer">

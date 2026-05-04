@@ -261,7 +261,6 @@ main.card--home .site-footer {
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 5rem);
-  border: 1px solid var(--accent2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -330,20 +329,123 @@ main.card--home .site-footer {
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 5rem);
-  border: 1px solid var(--accent2);
 }
 
 /* project preview inner block keeps future text aligned for comparison */
 .project-preview-inner {
   position: absolute;
-  top: 50%;
+  top: 2rem;
+  bottom: 2rem;
   left: 4rem;
   width: 38rem;
-  transform: translateY(-50%);
+  text-align: left;
+}
+
+/* temporary guide border marks the text area being visually adjusted */
+.project-preview-inner--guide {
+  border: 1px solid var(--accent2);
 }
 
 .project-preview-inner .coming-soon {
   top: 50%;
+}
+
+/* screenwriting mock list scrolls inside the shared project text box */
+.screenwriting-list {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 0.8rem;
+}
+
+.screenwriting-list::-webkit-scrollbar {
+  width: 0.45rem;
+}
+
+.screenwriting-list::-webkit-scrollbar-track {
+  background-color: var(--bg);
+  border-radius: 18px;
+}
+
+.screenwriting-list::-webkit-scrollbar-thumb {
+  background: rgba(193, 62, 255, 0.18);
+  background-color: rgba(193, 62, 255, 0.18);
+  border-radius: 18px;
+}
+
+.screenwriting-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(193, 62, 255, 0.36);
+  background-color: rgba(193, 62, 255, 0.36);
+}
+
+@supports (-moz-appearance: none) {
+  .screenwriting-list {
+    scrollbar-color: rgba(193, 62, 255, 0.32) var(--bg);
+    scrollbar-width: thin;
+  }
+}
+
+/* each mock entry leaves two quiet lines before the next title */
+.screenwriting-item {
+  margin: 0 0 2.7rem;
+}
+
+.screenwriting-item:last-child {
+  margin-bottom: 0;
+}
+
+/* mock titles use the same cyan size as Home directory headings */
+.screenwriting-item h2 {
+  margin: 0 0 0.55rem;
+  color: var(--accent2);
+  font-size: 0.92rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* each project preview keeps the title aligned with its detail group */
+.screenwriting-details {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+/* the temporary TV-ratio frame stands in for a future project image */
+.screenwriting-preview {
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--accent2);
+  color: var(--accent2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  font-size: 0.62rem;
+  height: 6.2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* descriptor rows sit to the right while keeping their left edge tidy */
+.screenwriting-meta {
+  text-align: left;
+}
+
+/* known project details use two quiet columns beside the preview frame */
+.screenwriting-label,
+.screenwriting-value {
+  display: inline-block;
+}
+
+.screenwriting-label {
+  width: 6.8rem;
+}
+
+/* mock project detail lines use the pale body-purpose text size */
+.screenwriting-item p {
+  margin: 0;
+  color: #e5d9ff;
+  font-size: 0.92rem;
+  line-height: 1.35;
 }
 
 /* about text block */
@@ -354,7 +456,6 @@ main.card--home .site-footer {
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 5rem);
-  border: 1px solid var(--accent2);
   display: flex;
   align-items: center;
   justify-content: center;

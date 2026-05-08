@@ -17,24 +17,27 @@
 </head>
 
 <body>
+<div class="card-frame">
 <main class="card card--wide card--about">
 
   <!-- navigation links at the top of the card -->
   <nav class="site-nav" aria-label="Primary navigation">
     <a href="home.html">Home</a>
+    <a class="site-nav-contact" href="home.html">Contact</a>
     <a href="about.html" class="active" aria-current="page">About</a>
-    <a href="screenwriting-projects.html">Screenwriting</a>
-    <a href="programming-projects.html">Programming</a>
+    <a href="screenwriting.html">Screenwriting</a>
+    <a href="programming.html">Programming</a>
   </nav>
 
   <!--
-    logo block uses SVG first, then PNG as a fallback image.
-    this keeps visual quality high while preserving a safe fallback path.
+    logo block uses SVG in landscape, then PNG as a mobile fallback.
+    this avoids mobile font substitution while preserving a safe fallback path.
   -->
   <div class="logo-wrap">
     <picture>
       <source
         srcset="assets/scbutterflyc13effff-10mm-angle-full-logo-2.svg"
+        media="(orientation: landscape)"
         type="image/svg+xml">
       <img src="assets/scbutterflyc13effff-10mm-angle-full-logo-2.png"
            alt="Sela’s Creations logo">
@@ -73,5 +76,6 @@
   </footer>
 
 </main>
+</div>
 </body>
 </html>

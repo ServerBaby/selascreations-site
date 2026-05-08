@@ -16,33 +16,45 @@
 </head>
 
 <body>
-<main class="card card--notfound">
+<div class="card-frame">
+<main class="card card--wide card--projects">
 
   <!-- navigation links at the top of the card -->
   <nav class="site-nav" aria-label="Primary navigation">
     <a href="home.html">Home</a>
+    <a class="site-nav-contact" href="home.html">Contact</a>
     <a href="about.html">About</a>
-    <a href="screenwriting-projects.html">Screenwriting</a>
-    <a href="programming-projects.html">Programming</a>
+    <a href="screenwriting.html">Screenwriting</a>
+    <a href="programming.html">Programming</a>
   </nav>
 
   <!--
-    logo block uses SVG first, then PNG as a fallback image.
-    this keeps visual quality high while preserving a safe fallback path.
+    logo block uses SVG in landscape, then PNG as a mobile fallback.
+    this avoids mobile font substitution while preserving a safe fallback path.
   -->
   <div class="logo-wrap">
     <picture>
       <source
         srcset="assets/scbutterflyc13effff-10mm-angle-full-logo-2.svg"
+        media="(orientation: landscape)"
         type="image/svg+xml">
       <img src="assets/scbutterflyc13effff-10mm-angle-full-logo-2.png"
            alt="Sela’s Creations logo">
     </picture>
   </div>
 
-  <!-- 404 replacement for tagline -->
-  <div class="error-title">404 – Page Not Found</div>
-  <div class="error-sub">Oops! That page flew away…</div>
+  <!--
+    404 content box mirrors the Programming Projects placeholder area.
+    only the message text changes; the layout uses the same card positions.
+  -->
+  <section class="project-preview-box" aria-label="Page not found message">
+    <div class="project-preview-inner">
+      <div class="notfound-message">
+        <div class="error-title">404 – Page Not Found</div>
+        <div class="error-sub">Oops! That page flew away…</div>
+      </div>
+    </div>
+  </section>
 
   <!-- footer at bottom -->
   <footer class="site-footer">
@@ -50,5 +62,6 @@
   </footer>
 
 </main>
+</div>
 </body>
 </html>

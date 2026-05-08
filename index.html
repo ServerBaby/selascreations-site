@@ -16,16 +16,18 @@
 </head>
 
 <body>
+<div class="card-frame">
 <main class="card card--home">
 
   <!--
-    logo block uses SVG first, then PNG as a fallback image.
-    this keeps visual quality high while preserving a safe fallback path.
+    logo block uses SVG in landscape, then PNG as a mobile fallback.
+    this avoids mobile font substitution while preserving a safe fallback path.
   -->
   <div class="logo-wrap">
     <picture>
       <source
         srcset="assets/scbutterflyc13effff-10mm-angle-full-logo-2.svg"
+        media="(orientation: landscape)"
         type="image/svg+xml">
       <img src="assets/scbutterflyc13effff-10mm-angle-full-logo-2.png"
            alt="Sela’s Creations logo">
@@ -45,5 +47,6 @@
   </footer>
 
 </main>
+</div>
 </body>
 </html>
